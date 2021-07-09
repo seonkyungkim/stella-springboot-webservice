@@ -1,6 +1,9 @@
 package com.example.springboot.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /*
 * If Entity Repository class extends JpaRepository<Entity class, PK type>, basic CRUD methods would be auto-created.
@@ -12,5 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 *
 * */
 public interface PostsRepository extends JpaRepository<Posts,Long> {
+    //SpringDataJpa에서 제공하지 않는 메서드는 아래처럼 @Query로 작성할 수 있다.
 
 }

@@ -3,6 +3,9 @@ package com.example.springboot.web.dto;
 import com.example.springboot.domain.posts.Posts;
 import lombok.Getter;
 
+/*
+* DTO to get read requests.
+* */
 @Getter
 public class PostsResponseDto {
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,7 +30,7 @@ class PostsRepositoryTest {
     * postRepository.finaAll(): select all data from table "posts". It needs a List<Posts> object in order to put the data in.
     * */
     @Test
-    void posts_save(){
+    void posts_saved(){
         //given: Two parameters are valued and put data into postRepository.save() with the builder pattern.
         String title="Test title";
         String content="Test content";
@@ -48,4 +49,24 @@ class PostsRepositoryTest {
         assertThat(posts.getContent()).isEqualTo(content);
     }
 
+    @Test
+    void BaseTimeEntity_saved(){
+        //given
+        LocalDateTime now = LocalDateTime.of(2021,7,8,19,06,0);
+        postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
+
+        //when
+        List<Posts> postsList = postsRepository.findAll();
+
+        //then
+        Posts posts = postsList.get(0);
+
+        System.out.println(">>>>>>> createDate= "+posts.getCreatedDate()+", modifiedDate= "+posts.getModifiedDate());
+        assertThat(posts.getCreatedDate()).isAfter(now);
+        assertThat(posts.getModifiedDate()).isAfter(now);
+    }
 }
