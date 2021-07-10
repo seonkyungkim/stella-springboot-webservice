@@ -14,23 +14,31 @@ public class PostsApiController {
 
     private final PostsService postsService;
 
-    //create
+    //Create - POST Method
     @PostMapping("/api/v1/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto){
+    @ResponseBody
+    public Long save(@RequestBody PostsSaveRequestDto requestDto) {
         return postsService.save(requestDto);
     }
 
-    //update
+    //Update - PUT Method
     @PutMapping("/api/v1/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto){
+    @ResponseBody
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
 
-    //read
+    //Read - GET Method
     @GetMapping("/api/v1/posts/{id}")
-    public PostsResponseDto findById(@PathVariable Long id){
+    public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
     }
 
-    //delete
+    //Delete - DELETE Method
+    @DeleteMapping("/api/v1/posts/{id}")
+    @ResponseBody
+    public Long delete(@PathVariable Long id){
+        postsService.delete(id);
+        return id;
+    }
 }

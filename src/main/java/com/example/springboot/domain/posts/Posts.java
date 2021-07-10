@@ -1,5 +1,6 @@
 package com.example.springboot.domain.posts;
 
+import com.example.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity //An entity class linked with a table named by the underscore convention.
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id //Primary Key
     @GeneratedValue(strategy = GenerationType.IDENTITY)   //auto_increment enabled

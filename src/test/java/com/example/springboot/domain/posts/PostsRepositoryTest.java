@@ -52,20 +52,20 @@ class PostsRepositoryTest {
     @Test
     void BaseTimeEntity_saved(){
         //given
-        LocalDateTime now = LocalDateTime.of(2021,7,8,19,06,0);
+        LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
         postsRepository.save(Posts.builder()
                 .title("title")
                 .content("content")
                 .author("author")
                 .build());
-
         //when
         List<Posts> postsList = postsRepository.findAll();
 
         //then
         Posts posts = postsList.get(0);
 
-        System.out.println(">>>>>>> createDate= "+posts.getCreatedDate()+", modifiedDate= "+posts.getModifiedDate());
+        System.out.println(">>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate=" + posts.getModifiedDate());
+
         assertThat(posts.getCreatedDate()).isAfter(now);
         assertThat(posts.getModifiedDate()).isAfter(now);
     }
