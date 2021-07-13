@@ -6,6 +6,17 @@
         <div class="row">
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">Post</a>
+                <!-- Mustache doesn't have the if statement. It only judges true or false.
+                     그래서 Mustache에는 항상 최종값을 넘겨주어야 한다. If userName has a value, the value will be displayed. -->
+                {{#userName}}
+                    Logged in as: <span id="user">{{userName}}</span>
+                <!-- a href="/logout" : Spring security에서 기본적으로 제공하는 logout URL. 개발자가 별도로 URL이 /logout인 컨트롤러를 만들 필요가 없다.-->
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                {{/userName}}
+                <!-- If userName is null, Login button will be displayed. -->
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                {{/userName}}
             </div>
         </div>
     </div>
