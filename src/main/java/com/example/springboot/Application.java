@@ -8,8 +8,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 * With @SpringBootApplication, it works as a main class of the project.
 * It automatically sets basic settings for Springboot, reading and writing Spring beans.
 * It has to be located to the root path so that Springboot starts to read the configuration from its location.
+*
+* Deletes @EnableJpaAuditing in order to be separated with @SpringBootApplication.
+* Creates JpaConfig.java and add @EnableJpaAuditing
 * */
-@EnableJpaAuditing  //JPA auditing enabled
+//@EnableJpaAuditing
 @SpringBootApplication
 public class Application {
 
